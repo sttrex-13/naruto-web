@@ -1,20 +1,10 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background: linear-gradient(178deg, #902020, #7b1e1e, #5f1818);
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 5s ease infinite;
+  -moz-animation: AnimationName 5s ease infinite;
+  -o-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,15 +14,55 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.bg-gif {
+  background-image: url('images/itachi.gif');
+  background-size: cover; /* Cover the entire page */
+  background-repeat: no-repeat; /* Prevent background from repeating */
+  background-attachment: fixed; /* Keeps the background fixed during scrolling */
+  height: 100vh; /* Full height to the viewport */
+  min-width: 100vw;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.transition {
+  opacity: 1;
+  transition: opacity 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+.btn-next{
+  font-size: 1.25rem;
+  padding: 1.25rem;
+  width: 100%;
+  border-radius: 1.25rem;
+  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:54% 0%}
+  50%{background-position:47% 100%}
+  100%{background-position:54% 0%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:54% 0%}
+  50%{background-position:47% 100%}
+  100%{background-position:54% 0%}
+}
+@-o-keyframes AnimationName {
+  0%{background-position:54% 0%}
+  50%{background-position:47% 100%}
+  100%{background-position:54% 0%}
+}
+@keyframes AnimationName {
+  0%{background-position:54% 0%}
+  50%{background-position:47% 100%}
+  100%{background-position:54% 0%}
 }

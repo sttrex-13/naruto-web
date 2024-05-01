@@ -1,0 +1,22 @@
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 80vh;
+}
+
+.landing h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+}
+
+.landing p {
+    font-size: 1.2em;
+}
+
+.logo-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
