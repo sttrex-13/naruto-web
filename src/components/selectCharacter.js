@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/selectCharacter.css';
 import next from '../images/next.png';
 
-const SelectCharacter = ({ onNextStep }) => {
+const SelectCharacter = ({ onSelectCharacter }) => {
   const [characters, setCharacters] = useState([]);
   const [currentCharacterIndex, setCurrentCharacterIndex] = useState(0);
 
@@ -39,15 +39,15 @@ const SelectCharacter = ({ onNextStep }) => {
     <div className="select-character">
       <h1>WHO DO YOU WHAT TO TALK WITH?</h1>
       <div className="select-section">
-        <img src={next} className="next-logo" onClick={previousCharacter} />
+        <img src={next} className="next-logo" onClick={previousCharacter} alt="Previous" />
         <div className='character'>
-          <img src={characters[currentCharacterIndex]?.image} />
+          <img src={characters[currentCharacterIndex]?.image} alt={characters[currentCharacterIndex]?.name} />
         </div>
-        <img src={next} className="previous-logo" onClick={nextCharacter} />
+        <img src={next} className="previous-logo" onClick={nextCharacter} alt="Next" />
       </div>
       <h2>{characters[currentCharacterIndex]?.name}</h2>
       <p><b>Side Story:</b> {characters[currentCharacterIndex]?.sideStory}</p>
-      <button onClick={onNextStep} className="btn-select">
+      <button onClick={() => onSelectCharacter(characters[currentCharacterIndex])} className="btn-select">
         Select
       </button>
     </div>

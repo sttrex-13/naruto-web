@@ -2,34 +2,54 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Landing from './components/landing';
 import SelectCharacter from './components/selectCharacter';
+import Cutscene from './components/cutscene';
+import Question from './components/question';
+import Personality from './components/personality';
 
 const App = () => {
   const [step, setStep] = useState(0);
-  const [hideLanding, setHideLanding] = useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+  const [contentIndex, setContentIndex] = useState(0);
 
-  useEffect(() => {
-    if (step !== 0) {
-      setHideLanding(true);
+  const nextStep = () => setStep((prev) => prev + 1);
+
+  const handleSelectCharacter = (character) => {
+    setSelectedCharacter(character);
+    setContentIndex(0);
+    nextStep();
+  };
+
+  const nextContent = () => setContentIndex((prevIndex) => prevIndex + 1);
+
+  const playAgain = () => {setStep(0)}
+
+  const renderContent = () => {
+    if (step === 2 && selectedCharacter && selectedCharacter.sequence) {
+      const content = selectedCharacter.sequence[contentIndex];
+      if (!content) return <Personality character={selectedCharacter} onPlayAgain={playAgain}/>;
+
+      if (content.type === 'cutscene') {
+        return <Cutscene image={content.content} onNext={nextContent} />;
+      }
+
+      if (content.type === 'question') {
+        return (
+          <Question
+            question={content.content.question}
+            options={content.content.options}
+            onAnswer={nextContent}
+          />
+        );
+      }
     }
-  }, [step]);
-
-  const nextStep = () => {
-    setStep(step + 1);
+    return null;
   };
 
   return (
     <div className="App">
-      <div className={`transition ${hideLanding ? 'hidden' : ''}`}>
-        <Landing onNextStep={nextStep} />
-      </div>
-      <div className={`transition ${step !== 1 ? 'hidden' : ''}`}>
-        <SelectCharacter onNextStep={nextStep} />
-      </div>
-      <div className={`transition ${step !== 2 ? 'hidden' : ''} bg-gif`} onClick={nextStep}> CUTSCENE </div>
-      <div className={`transition ${step !== 3 ? 'hidden' : ''}`}> Questions 1 </div>
-      <div className={`transition ${step !== 4 ? 'hidden' : ''}`}>Text 2</div>
-      <div className={`transition ${step !== 5 ? 'hidden' : ''}`}>Question 2</div>
-      <button onClick={nextStep} className='btn-next' style={{marginTop: "2rem", width:"50%", display: step < 3? "none" : "" }}>Next</button>
+      {step === 0 && <Landing onNextStep={nextStep} />}
+      {step === 1 && <SelectCharacter onSelectCharacter={handleSelectCharacter} />}
+      {step === 2 && renderContent()}
     </div>
   );
 };
