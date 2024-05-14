@@ -29,7 +29,7 @@ const App = () => {
       if (!content) return <Personality character={selectedCharacter} onPlayAgain={playAgain}/>;
 
       if (content.type === 'cutscene') {
-        return <Cutscene image={content.content} onNext={nextContent} />;
+        return <Cutscene content={content.content} onNext={nextContent} />;
       }
 
       if (content.type === 'question') {

@@ -1,0 +1,17 @@
+.cutscene{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    text-align: center;
+    font-size: 1rem;
+
+    h2 {
+        white-space: pre-wrap;
+    }
+}
+
+h2 {
+    white-space: pre-wrap;
+}

@@ -1,11 +1,10 @@
 import React from 'react';
+import '../styles/cutscene.css'
 
-const Cutscene = ({ image, onNext }) => {
+const Cutscene = ({ content, onNext }) => {
   return (
-    <div className="cutscene">
-      <h2>Cutscene</h2>
-      <img src={image} alt="Cutscene" />
-      <button onClick={onNext}>Next</button>
+    <div className="cutscene" onClick={onNext}>
+      <h2>{content}</h2>
     </div>
   );
 };
