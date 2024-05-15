@@ -1,15 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import "../styles/question.css"
+import { setCookie } from '../cookie';
 
-const Question = ({ question, options, onAnswer }) => {
+const Question = ({ question, options, onAnswer , collect }) => {
   const [answer, setAnswer] = useState('');
 
   const handleOptionClick = (option) => {
     setAnswer(option);
+    if(collect){
+      setCookie("like", option);
+    }
     onAnswer(option);
   };
 
   const handleSubmit = () => {
+    if(collect){
+      setCookie("reason" , answer)
+    }
     onAnswer(answer);
   };
 

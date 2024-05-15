@@ -37,6 +37,7 @@ const App = () => {
           <Question
             question={content.content.question}
             options={content.content.options}
+            collect={content.collect}
             onAnswer={nextContent}
           />
         );

@@ -1,0 +1,118 @@
+.body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 1rem;
+    min-width: 100%;
+    color: rgba(170, 19, 15, 1);
+    background-color: white;
+    transition: filter 0.2s ease;
+
+    h1 {
+        font-size: 3rem;
+    }
+}
+
+.body.modal-open {
+    filter: brightness(0.5);
+}
+
+.close {
+    display: flex;
+    justify-content: end;
+}
+
+.character{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+        font-size: 2rem;
+    }
+}
+.attributes{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+    text-align: center;
+}
+
+.attribute{
+    margin-top: 1rem;
+    font-size: 1.25rem;
+    width: 45%;
+    border-radius: 1.25rem;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: rgba(170, 19, 15, 1);
+    color: white;
+}
+
+.btn-playagain{
+    font-size: 1.25rem;
+    padding: 1.25rem;
+    width: 50%;
+    border-radius: 1.25rem;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    background-color: #342C2C;
+    color: white;
+}
+
+.modal-attributes {
+    background-color: white;
+    text-align: center;
+    border-radius: 1.5rem;
+    min-width: 70%;
+    min-height: 50vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    color: black;
+    overflow: hidden;
+    h1 {
+        font-size: 2rem;
+        z-index: 1;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    hr {
+        height: 1px;
+        background-color: rgba(170, 19, 15, 1);
+        border: none;
+    }
+}
+
+.modal-attributes .background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/logo_akatsuki.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.2; /* Adjust the opacity of the background */
+    z-index: -1; /* Ensure the background is behind other content */
+}
+
+.modal-attributes .content {
+    position: relative; /* Ensure content is above the background */
+    z-index: 1; /* Ensure content is above the pseudo-element */
+}
+
