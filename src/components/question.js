@@ -14,8 +14,8 @@ const Question = ({ question, options, onAnswer , collect }) => {
   };
 
   const handleSubmit = () => {
-    if(collect){
-      setCookie("reason" , answer)
+    if (collect) {
+      setCookie("reason", answer);
     }
     onAnswer(answer);
   };
@@ -28,20 +28,24 @@ const Question = ({ question, options, onAnswer , collect }) => {
     <div className="question">
       <h2>{question}</h2>
       <div className='question-body'>
-      {options ? (
-        options.map((option, index) => (
-          <button key={index} onClick={() => handleOptionClick(option)} className='option'>
-            {option}
+        {options ? (
+          options.map((option, index) => (
+            <button key={index} onClick={() => handleOptionClick(option)} className='option'>
+              {option}
+            </button>
+          ))
+        ) : (
+          <textarea
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            className='text-box'
+          ></textarea>
+        )}
+        {!options && (
+          <button onClick={handleSubmit} className='btn-ans' disabled={!answer.trim()}>
+            Answer
           </button>
-        ))
-      ) : (
-        <textarea
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          className='text-box'
-        ></textarea>
-      )}
-      {!options && <button onClick={handleSubmit} className='btn-ans'>Answer</button>}
+        )}
       </div>
     </div>
   );

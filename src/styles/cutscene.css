@@ -15,3 +15,21 @@
 h2 {
     white-space: pre-wrap;
 }
+
+.desc-blink{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font: 1em sans-serif;
+    animation: blink 3s infinite;
+    animation-fill-mode: both;
+}
+
+@keyframes blink {
+    0% { opacity: 0 }
+    50% { opacity: 1 }
+    100% { opacity: 0 }
+    }
