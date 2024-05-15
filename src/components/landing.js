@@ -5,7 +5,7 @@ const Landing = ({ onNextStep }) => {
   return (
     <div className="landing">
       <div className='logo-text'>
-        <img src={logo}/>
+        <img src={logo} alt="logo"/>
         <h1>Akatsuki</h1>
       </div>
       <button onClick={onNextStep} className="btn-next">Next</button>
