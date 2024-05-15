@@ -31,7 +31,7 @@ const Personality = ({ character, attributes, onPlayAgain }) => {
           </div>
         ))}
       </div>
-      <button onClick={onPlayAgain} className='btn-playagain'>Summary</button>
+      <button onClick={onPlayAgain} className='btn-playagain'>Play again</button>
       </div>
       {isOpen && (
         <div className='modal-attributes'>
